@@ -7,6 +7,8 @@
 package pb_prod_products
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	v1 "production_service/gen/go/common/filter/v1"
@@ -306,7 +308,7 @@ var File_prod_service_products_v1_service_proto protoreflect.FileDescriptor
 
 const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\n" +
-	"&prod_service/products/v1/service.proto\x12\x18prod_service.products.v1\x1a\x16filter/v1/filter.proto\x1a&prod_service/products/v1/product.proto\"\xfd\x01\n" +
+	"&prod_service/products/v1/service.proto\x12\x18prod_service.products.v1\x1a\x16filter/v1/filter.proto\x1a\x1cgoogle/api/annotations.proto\x1a&prod_service/products/v1/product.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\xfd\x01\n" +
 	"\x14CreateProductRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x19\n" +
@@ -331,10 +333,14 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\vcategory_id\x18\x06 \x01(\v2\x1c.filter.v1.StringFieldFilterR\n" +
 	"categoryId\"R\n" +
 	"\x13AllProductsResponse\x12;\n" +
-	"\aproduct\x18\x01 \x03(\v2!.prod_service.products.v1.ProductR\aproduct2\xf2\x01\n" +
-	"\x0eProductService\x12r\n" +
-	"\rCreateProduct\x12..prod_service.products.v1.CreateProductRequest\x1a/.prod_service.products.v1.CreateProductResponse\"\x00\x12l\n" +
-	"\vAllProducts\x12,.prod_service.products.v1.AllProductsRequest\x1a-.prod_service.products.v1.AllProductsResponse\"\x00B\xe8\x01\n" +
+	"\aproduct\x18\x01 \x03(\v2!.prod_service.products.v1.ProductR\aproduct2\xcc\x03\n" +
+	"\x0eProductService\x12\xdd\x01\n" +
+	"\rCreateProduct\x12..prod_service.products.v1.CreateProductRequest\x1a/.prod_service.products.v1.CreateProductResponse\"k\x92AQ\n" +
+	"\bProducts\x12\x14Create a new product\x1a/Creates a new product with the provided details\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/products\x12\xd9\x01\n" +
+	"\vAllProducts\x12,.prod_service.products.v1.AllProductsRequest\x1a-.prod_service.products.v1.AllProductsResponse\"m\x92AV\n" +
+	"\bProducts\x12\x10Get all products\x1a8Retrieves a list of all products with optional filtering\x82\xd3\xe4\x93\x02\x0e\x12\f/v1/productsB\xf3\x02\x92A\x87\x01\x12]\n" +
+	"\x13Product Service API\x12\x19API for managing products\"&\n" +
+	"\x0fProduct Service\x1a\x13support@example.com2\x031.0*\x02\x01\x022\x10application/json:\x10application/json\n" +
 	"\x1ccom.prod_service.products.v1B\fServiceProtoP\x01Z<my-first-go-project/gen/go/prod/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
 
 var (
