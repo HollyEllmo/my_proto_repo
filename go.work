@@ -1,0 +1,7 @@
+go 1.24.2
+
+use (
+	.
+	./gen/go/filter
+	./gen/go/prod_service
+)

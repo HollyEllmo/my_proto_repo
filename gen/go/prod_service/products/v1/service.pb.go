@@ -7,11 +7,11 @@
 package pb_prod_products
 
 import (
+	v1 "github.com/HollyEllmo/my-proto-repo/gen/go/filter/v1"
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	v1 "production_service/gen/go/common/filter/v1"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -338,10 +338,10 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\rCreateProduct\x12..prod_service.products.v1.CreateProductRequest\x1a/.prod_service.products.v1.CreateProductResponse\"k\x92AQ\n" +
 	"\bProducts\x12\x14Create a new product\x1a/Creates a new product with the provided details\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/v1/products\x12\xd9\x01\n" +
 	"\vAllProducts\x12,.prod_service.products.v1.AllProductsRequest\x1a-.prod_service.products.v1.AllProductsResponse\"m\x92AV\n" +
-	"\bProducts\x12\x10Get all products\x1a8Retrieves a list of all products with optional filtering\x82\xd3\xe4\x93\x02\x0e\x12\f/v1/productsB\xf3\x02\x92A\x87\x01\x12]\n" +
+	"\bProducts\x12\x10Get all products\x1a8Retrieves a list of all products with optional filtering\x82\xd3\xe4\x93\x02\x0e\x12\f/v1/productsB\x8b\x03\x92A\x87\x01\x12]\n" +
 	"\x13Product Service API\x12\x19API for managing products\"&\n" +
 	"\x0fProduct Service\x1a\x13support@example.com2\x031.0*\x02\x01\x022\x10application/json:\x10application/json\n" +
-	"\x1ccom.prod_service.products.v1B\fServiceProtoP\x01Z<my-first-go-project/gen/go/prod/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
+	"\x1ccom.prod_service.products.v1B\fServiceProtoP\x01ZTgithub.com/HollyEllmo/my-proto-repo/gen/go/prod_service/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
 
 var (
 	file_prod_service_products_v1_service_proto_rawDescOnce sync.Once

@@ -63,8 +63,19 @@ install-npm-deps:
 gen: buf-install install-protoc-plugins install-npm-deps
 	@BUF_CACHE_DIR=/tmp/buf-cache PATH="$(HOME)/bin:$$PATH" buf generate
 	@for dir in $(CURDIR)/gen/go/*/; do \
-		cd $$dir && \
-		go mod init && go mod tidy; \
+		cd $$dir; \
+		dir_name=$$(basename $$dir); \
+		template_file="$(CURDIR)/templates/$$dir_name-go.mod.template"; \
+		if [ -f "$$template_file" ]; then \
+			echo "Using template $$template_file for $$dir_name"; \
+			cp "$$template_file" go.mod; \
+		else \
+			module_path=$$(echo $$dir | sed 's|$(CURDIR)/||' | sed 's|/$$||'); \
+			module_name="github.com/HollyEllmo/my-proto-repo/$$module_path"; \
+			echo "Creating new go.mod for $$module_name"; \
+			go mod init "$$module_name"; \
+		fi; \
+		go mod tidy; \
 	done
 	@echo "Generating TypeScript client package..."
 	@if [ -d "gen/typescript" ]; then \

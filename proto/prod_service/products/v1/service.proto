@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "prod_service/products/v1/product.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-option go_package = "my-first-go-project/gen/go/prod/products/v1;pb_prod_products";
+option go_package = "github.com/HollyEllmo/my-proto-repo/gen/go/prod_service/products/v1;pb_prod_products";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Product Service API"
