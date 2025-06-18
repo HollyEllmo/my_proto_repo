@@ -31,7 +31,7 @@ type CreateProductRequest struct {
 	// Description
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Image ID
-	ImageId string `protobuf:"bytes,3,opt,name=image_id,json=imageId,proto3" json:"image_id,omitempty"`
+	ImageId *string `protobuf:"bytes,3,opt,name=image_id,json=imageId,proto3,oneof" json:"image_id,omitempty"`
 	// Price
 	Price string `protobuf:"bytes,4,opt,name=price,proto3" json:"price,omitempty"`
 	// Prince Currency
@@ -91,8 +91,8 @@ func (x *CreateProductRequest) GetDescription() string {
 }
 
 func (x *CreateProductRequest) GetImageId() string {
-	if x != nil {
-		return x.ImageId
+	if x != nil && x.ImageId != nil {
+		return *x.ImageId
 	}
 	return ""
 }
@@ -308,18 +308,19 @@ var File_prod_service_products_v1_service_proto protoreflect.FileDescriptor
 
 const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\n" +
-	"&prod_service/products/v1/service.proto\x12\x18prod_service.products.v1\x1a\x16filter/v1/filter.proto\x1a\x1cgoogle/api/annotations.proto\x1a&prod_service/products/v1/product.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\xfd\x01\n" +
+	"&prod_service/products/v1/service.proto\x12\x18prod_service.products.v1\x1a\x16filter/v1/filter.proto\x1a\x1cgoogle/api/annotations.proto\x1a&prod_service/products/v1/product.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x8f\x02\n" +
 	"\x14CreateProductRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x19\n" +
-	"\bimage_id\x18\x03 \x01(\tR\aimageId\x12\x14\n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1e\n" +
+	"\bimage_id\x18\x03 \x01(\tH\x00R\aimageId\x88\x01\x01\x12\x14\n" +
 	"\x05price\x18\x04 \x01(\tR\x05price\x12\x1f\n" +
 	"\vcurrency_id\x18\x05 \x01(\rR\n" +
 	"currencyId\x12\x16\n" +
 	"\x06rating\x18\x06 \x01(\rR\x06rating\x12\x1f\n" +
 	"\vcategory_id\x18\a \x01(\tR\n" +
 	"categoryId\x12$\n" +
-	"\rspecification\x18\b \x01(\tR\rspecification\"T\n" +
+	"\rspecification\x18\b \x01(\tR\rspecificationB\v\n" +
+	"\t_image_id\"T\n" +
 	"\x15CreateProductResponse\x12;\n" +
 	"\aproduct\x18\x01 \x01(\v2!.prod_service.products.v1.ProductR\aproduct\"\xe0\x02\n" +
 	"\x12AllProductsRequest\x125\n" +
@@ -392,6 +393,7 @@ func file_prod_service_products_v1_service_proto_init() {
 		return
 	}
 	file_prod_service_products_v1_product_proto_init()
+	file_prod_service_products_v1_service_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
