@@ -1,3 +1,3 @@
-module github.com/HollyEllmo/my-proto-repo
+module github.com/HollyEllmo/my_proto_repo
 
 go 1.24.2

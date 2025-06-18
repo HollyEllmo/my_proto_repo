@@ -1,4 +1,4 @@
-module github.com/HollyEllmo/my-proto-repo/gen/go/filter
+module github.com/HollyEllmo/my_proto_repo/gen/go/filter
 
 go 1.24.2
 

@@ -1,4 +1,4 @@
-module github.com/HollyEllmo/my-proto-repo/gen/go/prod_service
+module github.com/HollyEllmo/my_proto_repo/gen/go/prod_service
 
 go 1.24.2
 
