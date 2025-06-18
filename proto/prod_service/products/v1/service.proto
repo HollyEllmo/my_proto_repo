@@ -53,7 +53,7 @@ message CreateProductRequest {
   // Description
   string description = 2;
   // Image ID
-  string image_id = 3;
+  optional string image_id = 3;
   // Price
   string price = 4;
   // Prince Currency
