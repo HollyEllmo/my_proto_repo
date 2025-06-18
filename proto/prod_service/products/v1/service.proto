@@ -62,7 +62,7 @@ message CreateProductRequest {
   uint32 rating = 6;
   // Category ID
   string category_id = 7;
-  // Specification
+  // Prosuct Specification
   string specification = 8;
 }
 
