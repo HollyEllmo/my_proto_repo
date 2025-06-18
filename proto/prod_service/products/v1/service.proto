@@ -3,6 +3,7 @@ syntax = "proto3";
 package prod_service.products.v1;
 
 import "filter/v1/filter.proto";
+import "filter/v1/sort.proto";
 import "google/api/annotations.proto";
 import "prod_service/products/v1/product.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
@@ -62,7 +63,7 @@ message CreateProductRequest {
   uint32 rating = 6;
   // Category ID
   string category_id = 7;
-  // Prosuct Specification
+  // Specification
   string specification = 8;
 }
 
@@ -77,6 +78,7 @@ message AllProductsRequest {
   filter.v1.IntFieldFilter price = 4;
   filter.v1.IntFieldFilter rating = 5;
   filter.v1.StringFieldFilter category_id = 6;
+  filter.v1.Sort sort = 7;
 }
 
 message AllProductsResponse {

@@ -40,7 +40,7 @@ type CreateProductRequest struct {
 	Rating uint32 `protobuf:"varint,6,opt,name=rating,proto3" json:"rating,omitempty"`
 	// Category ID
 	CategoryId string `protobuf:"bytes,7,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
-	// Specification
+	// Prosuct Specification
 	Specification string `protobuf:"bytes,8,opt,name=specification,proto3" json:"specification,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -184,6 +184,7 @@ type AllProductsRequest struct {
 	Price         *v1.IntFieldFilter     `protobuf:"bytes,4,opt,name=price,proto3" json:"price,omitempty"`
 	Rating        *v1.IntFieldFilter     `protobuf:"bytes,5,opt,name=rating,proto3" json:"rating,omitempty"`
 	CategoryId    *v1.StringFieldFilter  `protobuf:"bytes,6,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	Sort          *v1.Sort               `protobuf:"bytes,7,opt,name=sort,proto3" json:"sort,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -260,6 +261,13 @@ func (x *AllProductsRequest) GetCategoryId() *v1.StringFieldFilter {
 	return nil
 }
 
+func (x *AllProductsRequest) GetSort() *v1.Sort {
+	if x != nil {
+		return x.Sort
+	}
+	return nil
+}
+
 type AllProductsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Product       []*Product             `protobuf:"bytes,1,rep,name=product,proto3" json:"product,omitempty"`
@@ -308,7 +316,7 @@ var File_prod_service_products_v1_service_proto protoreflect.FileDescriptor
 
 const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\n" +
-	"&prod_service/products/v1/service.proto\x12\x18prod_service.products.v1\x1a\x16filter/v1/filter.proto\x1a\x1cgoogle/api/annotations.proto\x1a&prod_service/products/v1/product.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x8f\x02\n" +
+	"&prod_service/products/v1/service.proto\x12\x18prod_service.products.v1\x1a\x16filter/v1/filter.proto\x1a\x14filter/v1/sort.proto\x1a\x1cgoogle/api/annotations.proto\x1a&prod_service/products/v1/product.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x8f\x02\n" +
 	"\x14CreateProductRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1e\n" +
@@ -322,7 +330,7 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\rspecification\x18\b \x01(\tR\rspecificationB\v\n" +
 	"\t_image_id\"T\n" +
 	"\x15CreateProductResponse\x12;\n" +
-	"\aproduct\x18\x01 \x01(\v2!.prod_service.products.v1.ProductR\aproduct\"\xe0\x02\n" +
+	"\aproduct\x18\x01 \x01(\v2!.prod_service.products.v1.ProductR\aproduct\"\x85\x03\n" +
 	"\x12AllProductsRequest\x125\n" +
 	"\n" +
 	"pagination\x18\x01 \x01(\v2\x15.filter.v1.PaginationR\n" +
@@ -332,7 +340,8 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\x05price\x18\x04 \x01(\v2\x19.filter.v1.IntFieldFilterR\x05price\x121\n" +
 	"\x06rating\x18\x05 \x01(\v2\x19.filter.v1.IntFieldFilterR\x06rating\x12=\n" +
 	"\vcategory_id\x18\x06 \x01(\v2\x1c.filter.v1.StringFieldFilterR\n" +
-	"categoryId\"R\n" +
+	"categoryId\x12#\n" +
+	"\x04sort\x18\a \x01(\v2\x0f.filter.v1.SortR\x04sort\"R\n" +
 	"\x13AllProductsResponse\x12;\n" +
 	"\aproduct\x18\x01 \x03(\v2!.prod_service.products.v1.ProductR\aproduct2\xcc\x03\n" +
 	"\x0eProductService\x12\xdd\x01\n" +
@@ -366,6 +375,7 @@ var file_prod_service_products_v1_service_proto_goTypes = []any{
 	(*v1.Pagination)(nil),         // 5: filter.v1.Pagination
 	(*v1.StringFieldFilter)(nil),  // 6: filter.v1.StringFieldFilter
 	(*v1.IntFieldFilter)(nil),     // 7: filter.v1.IntFieldFilter
+	(*v1.Sort)(nil),               // 8: filter.v1.Sort
 }
 var file_prod_service_products_v1_service_proto_depIdxs = []int32{
 	4,  // 0: prod_service.products.v1.CreateProductResponse.product:type_name -> prod_service.products.v1.Product
@@ -375,16 +385,17 @@ var file_prod_service_products_v1_service_proto_depIdxs = []int32{
 	7,  // 4: prod_service.products.v1.AllProductsRequest.price:type_name -> filter.v1.IntFieldFilter
 	7,  // 5: prod_service.products.v1.AllProductsRequest.rating:type_name -> filter.v1.IntFieldFilter
 	6,  // 6: prod_service.products.v1.AllProductsRequest.category_id:type_name -> filter.v1.StringFieldFilter
-	4,  // 7: prod_service.products.v1.AllProductsResponse.product:type_name -> prod_service.products.v1.Product
-	0,  // 8: prod_service.products.v1.ProductService.CreateProduct:input_type -> prod_service.products.v1.CreateProductRequest
-	2,  // 9: prod_service.products.v1.ProductService.AllProducts:input_type -> prod_service.products.v1.AllProductsRequest
-	1,  // 10: prod_service.products.v1.ProductService.CreateProduct:output_type -> prod_service.products.v1.CreateProductResponse
-	3,  // 11: prod_service.products.v1.ProductService.AllProducts:output_type -> prod_service.products.v1.AllProductsResponse
-	10, // [10:12] is the sub-list for method output_type
-	8,  // [8:10] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	8,  // 7: prod_service.products.v1.AllProductsRequest.sort:type_name -> filter.v1.Sort
+	4,  // 8: prod_service.products.v1.AllProductsResponse.product:type_name -> prod_service.products.v1.Product
+	0,  // 9: prod_service.products.v1.ProductService.CreateProduct:input_type -> prod_service.products.v1.CreateProductRequest
+	2,  // 10: prod_service.products.v1.ProductService.AllProducts:input_type -> prod_service.products.v1.AllProductsRequest
+	1,  // 11: prod_service.products.v1.ProductService.CreateProduct:output_type -> prod_service.products.v1.CreateProductResponse
+	3,  // 12: prod_service.products.v1.ProductService.AllProducts:output_type -> prod_service.products.v1.AllProductsResponse
+	11, // [11:13] is the sub-list for method output_type
+	9,  // [9:11] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_prod_service_products_v1_service_proto_init() }
