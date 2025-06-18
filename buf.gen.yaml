@@ -1,5 +1,6 @@
 version: v2
 plugins:
+  # Go code generation
   - local: protoc-gen-go
     out: gen/go
     opt:
@@ -8,5 +9,25 @@ plugins:
     out: gen/go
     opt:
       - paths=source_relative
+
+  # OpenAPI/Swagger generation
+  - local: protoc-gen-openapiv2
+    out: gen/swagger
+    opt:
+      - logtostderr=true
+
+  # TypeScript generation using buf remote plugins
+  - remote: buf.build/protocolbuffers/js:v3.21.2
+    out: gen/typescript
+    opt:
+      - import_style=commonjs
+      - binary
+
+  - remote: buf.build/grpc/web:v1.4.2
+    out: gen/typescript
+    opt:
+      - import_style=typescript
+      - mode=grpcwebtext
+
 managed:
   enabled: true

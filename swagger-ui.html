@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SwaggerUI для Product Service API" />
+    <title>Product Service API Documentation</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+      }
+      #swagger-ui {
+        max-width: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Product Service API Documentation</h1>
+    <div id="swagger-ui"></div>
+    <script
+      src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"
+      crossorigin
+    ></script>
+    <script>
+      console.log("Loading Swagger UI...");
+
+      window.onload = () => {
+        console.log("Window loaded, initializing Swagger UI...");
+
+        // Проверяем доступность JSON файла
+        fetch("./gen/swagger/prod_service/products/v1/service.swagger.json")
+          .then((response) => {
+            console.log("JSON response status:", response.status);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((spec) => {
+            console.log("JSON loaded successfully:", spec);
+
+            // Инициализируем Swagger UI
+            window.ui = SwaggerUIBundle({
+              spec: spec, // Используем загруженную спецификацию напрямую
+              dom_id: "#swagger-ui",
+              deepLinking: true,
+              presets: [SwaggerUIBundle.presets.apis],
+              plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+              onComplete: () => {
+                console.log("Swagger UI initialized successfully");
+              },
+              onFailure: (error) => {
+                console.error("Swagger UI initialization failed:", error);
+              },
+            });
+          })
+          .catch((error) => {
+            console.error("Error loading JSON:", error);
+            document.getElementById("swagger-ui").innerHTML =
+              '<div style="color: red; padding: 20px; border: 1px solid red; margin: 20px 0;">' +
+              "<h3>Ошибка загрузки API документации</h3>" +
+              "<p>Не удалось загрузить swagger JSON файл.</p>" +
+              "<p>Убедитесь, что генерация прошла успешно: <code>make proto</code></p>" +
+              "<p>Ошибка: " +
+              error.message +
+              "</p>" +
+              "</div>";
+          });
+      };
+    </script>
+  </body>
+</html>

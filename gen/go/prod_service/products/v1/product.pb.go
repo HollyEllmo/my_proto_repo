@@ -177,8 +177,8 @@ const file_prod_service_products_v1_product_proto_rawDesc = "" +
 	"updated_at\x18\n" +
 	" \x01(\x03R\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\v \x01(\x03R\tcreatedAtB\xe8\x01\n" +
-	"\x1ccom.prod_service.products.v1B\fProductProtoP\x01Z<my-first-go-project/gen/go/prod/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
+	"created_at\x18\v \x01(\x03R\tcreatedAtB\x80\x02\n" +
+	"\x1ccom.prod_service.products.v1B\fProductProtoP\x01ZTgithub.com/HollyEllmo/my-proto-repo/gen/go/prod_service/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
 
 var (
 	file_prod_service_products_v1_product_proto_rawDescOnce sync.Once

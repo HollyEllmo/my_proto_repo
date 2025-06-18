@@ -1,0 +1,29 @@
+{
+  "name": "my-proto-repo-client",
+  "version": "1.0.0",
+  "description": "TypeScript client for proto services",
+  "main": "index.js",
+  "scripts": {
+    "build": "test -d gen/typescript && tsc || echo 'TypeScript files not generated yet'",
+    "postgen": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "ts-protoc-gen": "^0.15.0",
+    "protoc-gen-grpc-web": "^1.4.2"
+  },
+  "dependencies": {
+    "grpc-web": "^1.4.2",
+    "@types/google-protobuf": "^3.15.0",
+    "google-protobuf": "^3.21.0"
+  },
+  "keywords": [
+    "protobuf",
+    "grpc",
+    "typescript",
+    "client"
+  ],
+  "author": "",
+  "license": "ISC"
+}

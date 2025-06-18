@@ -3,13 +3,48 @@ syntax = "proto3";
 package prod_service.products.v1;
 
 import "filter/v1/filter.proto";
+import "google/api/annotations.proto";
 import "prod_service/products/v1/product.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
-option go_package = "my-first-go-project/gen/go/prod/products/v1;pb_prod_products";
+option go_package = "github.com/HollyEllmo/my-proto-repo/gen/go/prod_service/products/v1;pb_prod_products";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Product Service API"
+    version: "1.0"
+    description: "API for managing products"
+    contact: {
+      name: "Product Service"
+      email: "support@example.com"
+    }
+  }
+  schemes: HTTP
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+};
 
 service ProductService {
-  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {}
-  rpc AllProducts(AllProductsRequest) returns (AllProductsResponse) {}
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {
+    option (google.api.http) = {
+      post: "/v1/products"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Create a new product"
+      description: "Creates a new product with the provided details"
+      tags: "Products"
+    };
+  }
+
+  rpc AllProducts(AllProductsRequest) returns (AllProductsResponse) {
+    option (google.api.http) = {get: "/v1/products"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get all products"
+      description: "Retrieves a list of all products with optional filtering"
+      tags: "Products"
+    };
+  }
 }
 
 message CreateProductRequest {
