@@ -77,7 +77,7 @@ message AllProductsRequest {
   filter.v1.StringFieldFilter description = 3;
   filter.v1.IntFieldFilter price = 4;
   filter.v1.IntFieldFilter rating = 5;
-  filter.v1.StringFieldFilter category_id = 6;
+  filter.v1.IntFieldFilter category_id = 6;
   filter.v1.Sort sort = 7;
 }
 

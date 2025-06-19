@@ -40,7 +40,7 @@ type CreateProductRequest struct {
 	Rating uint32 `protobuf:"varint,6,opt,name=rating,proto3" json:"rating,omitempty"`
 	// Category ID
 	CategoryId string `protobuf:"bytes,7,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
-	// Prosuct Specification
+	// Specification
 	Specification string `protobuf:"bytes,8,opt,name=specification,proto3" json:"specification,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -183,7 +183,7 @@ type AllProductsRequest struct {
 	Description   *v1.StringFieldFilter  `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	Price         *v1.IntFieldFilter     `protobuf:"bytes,4,opt,name=price,proto3" json:"price,omitempty"`
 	Rating        *v1.IntFieldFilter     `protobuf:"bytes,5,opt,name=rating,proto3" json:"rating,omitempty"`
-	CategoryId    *v1.StringFieldFilter  `protobuf:"bytes,6,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	CategoryId    *v1.IntFieldFilter     `protobuf:"bytes,6,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
 	Sort          *v1.Sort               `protobuf:"bytes,7,opt,name=sort,proto3" json:"sort,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -254,7 +254,7 @@ func (x *AllProductsRequest) GetRating() *v1.IntFieldFilter {
 	return nil
 }
 
-func (x *AllProductsRequest) GetCategoryId() *v1.StringFieldFilter {
+func (x *AllProductsRequest) GetCategoryId() *v1.IntFieldFilter {
 	if x != nil {
 		return x.CategoryId
 	}
@@ -330,7 +330,7 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\rspecification\x18\b \x01(\tR\rspecificationB\v\n" +
 	"\t_image_id\"T\n" +
 	"\x15CreateProductResponse\x12;\n" +
-	"\aproduct\x18\x01 \x01(\v2!.prod_service.products.v1.ProductR\aproduct\"\x85\x03\n" +
+	"\aproduct\x18\x01 \x01(\v2!.prod_service.products.v1.ProductR\aproduct\"\x82\x03\n" +
 	"\x12AllProductsRequest\x125\n" +
 	"\n" +
 	"pagination\x18\x01 \x01(\v2\x15.filter.v1.PaginationR\n" +
@@ -338,8 +338,8 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\v2\x1c.filter.v1.StringFieldFilterR\x04name\x12>\n" +
 	"\vdescription\x18\x03 \x01(\v2\x1c.filter.v1.StringFieldFilterR\vdescription\x12/\n" +
 	"\x05price\x18\x04 \x01(\v2\x19.filter.v1.IntFieldFilterR\x05price\x121\n" +
-	"\x06rating\x18\x05 \x01(\v2\x19.filter.v1.IntFieldFilterR\x06rating\x12=\n" +
-	"\vcategory_id\x18\x06 \x01(\v2\x1c.filter.v1.StringFieldFilterR\n" +
+	"\x06rating\x18\x05 \x01(\v2\x19.filter.v1.IntFieldFilterR\x06rating\x12:\n" +
+	"\vcategory_id\x18\x06 \x01(\v2\x19.filter.v1.IntFieldFilterR\n" +
 	"categoryId\x12#\n" +
 	"\x04sort\x18\a \x01(\v2\x0f.filter.v1.SortR\x04sort\"R\n" +
 	"\x13AllProductsResponse\x12;\n" +
@@ -384,7 +384,7 @@ var file_prod_service_products_v1_service_proto_depIdxs = []int32{
 	6,  // 3: prod_service.products.v1.AllProductsRequest.description:type_name -> filter.v1.StringFieldFilter
 	7,  // 4: prod_service.products.v1.AllProductsRequest.price:type_name -> filter.v1.IntFieldFilter
 	7,  // 5: prod_service.products.v1.AllProductsRequest.rating:type_name -> filter.v1.IntFieldFilter
-	6,  // 6: prod_service.products.v1.AllProductsRequest.category_id:type_name -> filter.v1.StringFieldFilter
+	7,  // 6: prod_service.products.v1.AllProductsRequest.category_id:type_name -> filter.v1.IntFieldFilter
 	8,  // 7: prod_service.products.v1.AllProductsRequest.sort:type_name -> filter.v1.Sort
 	4,  // 8: prod_service.products.v1.AllProductsResponse.product:type_name -> prod_service.products.v1.Product
 	0,  // 9: prod_service.products.v1.ProductService.CreateProduct:input_type -> prod_service.products.v1.CreateProductRequest
