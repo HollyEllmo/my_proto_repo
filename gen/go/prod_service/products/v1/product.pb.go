@@ -32,7 +32,7 @@ type Product struct {
 	// Image ID
 	ImageId *string `protobuf:"bytes,4,opt,name=image_id,json=imageId,proto3,oneof" json:"image_id,omitempty"`
 	// Price
-	Price string `protobuf:"bytes,5,opt,name=price,proto3" json:"price,omitempty"`
+	Price uint64 `protobuf:"varint,5,opt,name=price,proto3" json:"price,omitempty"`
 	// Prince Currency
 	CurrencyId uint32 `protobuf:"varint,6,opt,name=currency_id,json=currencyId,proto3" json:"currency_id,omitempty"`
 	// Rating
@@ -107,11 +107,11 @@ func (x *Product) GetImageId() string {
 	return ""
 }
 
-func (x *Product) GetPrice() string {
+func (x *Product) GetPrice() uint64 {
 	if x != nil {
 		return x.Price
 	}
-	return ""
+	return 0
 }
 
 func (x *Product) GetCurrencyId() uint32 {
@@ -166,7 +166,7 @@ const file_prod_service_products_v1_product_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1e\n" +
 	"\bimage_id\x18\x04 \x01(\tH\x00R\aimageId\x88\x01\x01\x12\x14\n" +
-	"\x05price\x18\x05 \x01(\tR\x05price\x12\x1f\n" +
+	"\x05price\x18\x05 \x01(\x04R\x05price\x12\x1f\n" +
 	"\vcurrency_id\x18\x06 \x01(\rR\n" +
 	"currencyId\x12\x16\n" +
 	"\x06rating\x18\a \x01(\rR\x06rating\x12\x1f\n" +
