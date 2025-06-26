@@ -30,7 +30,7 @@ type Product struct {
 	// Description
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Image ID
-	ImageId string `protobuf:"bytes,4,opt,name=image_id,json=imageId,proto3" json:"image_id,omitempty"`
+	ImageId *string `protobuf:"bytes,4,opt,name=image_id,json=imageId,proto3,oneof" json:"image_id,omitempty"`
 	// Price
 	Price string `protobuf:"bytes,5,opt,name=price,proto3" json:"price,omitempty"`
 	// Prince Currency
@@ -38,7 +38,7 @@ type Product struct {
 	// Rating
 	Rating uint32 `protobuf:"varint,7,opt,name=rating,proto3" json:"rating,omitempty"`
 	// Category ID
-	CategoryId string `protobuf:"bytes,8,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	CategoryId uint32 `protobuf:"varint,8,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
 	// Specification
 	Specification string `protobuf:"bytes,9,opt,name=specification,proto3" json:"specification,omitempty"`
 	// Updated at
@@ -101,8 +101,8 @@ func (x *Product) GetDescription() string {
 }
 
 func (x *Product) GetImageId() string {
-	if x != nil {
-		return x.ImageId
+	if x != nil && x.ImageId != nil {
+		return *x.ImageId
 	}
 	return ""
 }
@@ -128,11 +128,11 @@ func (x *Product) GetRating() uint32 {
 	return 0
 }
 
-func (x *Product) GetCategoryId() string {
+func (x *Product) GetCategoryId() uint32 {
 	if x != nil {
 		return x.CategoryId
 	}
-	return ""
+	return 0
 }
 
 func (x *Product) GetSpecification() string {
@@ -160,24 +160,25 @@ var File_prod_service_products_v1_product_proto protoreflect.FileDescriptor
 
 const file_prod_service_products_v1_product_proto_rawDesc = "" +
 	"\n" +
-	"&prod_service/products/v1/product.proto\x12\x18prod_service.products.v1\"\xbe\x02\n" +
+	"&prod_service/products/v1/product.proto\x12\x18prod_service.products.v1\"\xd0\x02\n" +
 	"\aProduct\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x19\n" +
-	"\bimage_id\x18\x04 \x01(\tR\aimageId\x12\x14\n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x1e\n" +
+	"\bimage_id\x18\x04 \x01(\tH\x00R\aimageId\x88\x01\x01\x12\x14\n" +
 	"\x05price\x18\x05 \x01(\tR\x05price\x12\x1f\n" +
 	"\vcurrency_id\x18\x06 \x01(\rR\n" +
 	"currencyId\x12\x16\n" +
 	"\x06rating\x18\a \x01(\rR\x06rating\x12\x1f\n" +
-	"\vcategory_id\x18\b \x01(\tR\n" +
+	"\vcategory_id\x18\b \x01(\rR\n" +
 	"categoryId\x12$\n" +
 	"\rspecification\x18\t \x01(\tR\rspecification\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\n" +
 	" \x01(\x03R\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\v \x01(\x03R\tcreatedAtB\x80\x02\n" +
+	"created_at\x18\v \x01(\x03R\tcreatedAtB\v\n" +
+	"\t_image_idB\x80\x02\n" +
 	"\x1ccom.prod_service.products.v1B\fProductProtoP\x01ZTgithub.com/HollyEllmo/my-proto-repo/gen/go/prod_service/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
 
 var (
@@ -209,6 +210,7 @@ func file_prod_service_products_v1_product_proto_init() {
 	if File_prod_service_products_v1_product_proto != nil {
 		return
 	}
+	file_prod_service_products_v1_product_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

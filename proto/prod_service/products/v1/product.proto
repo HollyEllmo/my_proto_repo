@@ -12,7 +12,7 @@ message Product {
   // Description
   string description = 3;
   // Image ID
-  string image_id = 4;
+  optional string image_id = 4;
   // Price
   string price = 5;
   // Prince Currency
@@ -20,7 +20,7 @@ message Product {
   // Rating
   uint32 rating = 7;
   // Category ID
-  string category_id = 8;
+  uint32 category_id = 8;
   // Specification
   string specification = 9;
   // Updated at
