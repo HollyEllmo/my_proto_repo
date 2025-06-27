@@ -314,22 +314,24 @@ func (x *AllProductsResponse) GetProduct() []*Product {
 
 type UpdateProductRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Name
-	Name *string `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description
-	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Image ID
-	ImageId *string `protobuf:"bytes,3,opt,name=image_id,json=imageId,proto3,oneof" json:"image_id,omitempty"`
+	ImageId *string `protobuf:"bytes,4,opt,name=image_id,json=imageId,proto3,oneof" json:"image_id,omitempty"`
 	// Price
-	Price *uint64 `protobuf:"varint,4,opt,name=price,proto3,oneof" json:"price,omitempty"`
+	Price *uint64 `protobuf:"varint,5,opt,name=price,proto3,oneof" json:"price,omitempty"`
 	// Prince Currency
-	CurrencyId *uint32 `protobuf:"varint,5,opt,name=currency_id,json=currencyId,proto3,oneof" json:"currency_id,omitempty"`
+	CurrencyId *uint32 `protobuf:"varint,6,opt,name=currency_id,json=currencyId,proto3,oneof" json:"currency_id,omitempty"`
 	// Rating
-	Rating *uint32 `protobuf:"varint,6,opt,name=rating,proto3,oneof" json:"rating,omitempty"`
+	Rating *uint32 `protobuf:"varint,7,opt,name=rating,proto3,oneof" json:"rating,omitempty"`
 	// Category ID
-	CategoryId *uint32 `protobuf:"varint,7,opt,name=category_id,json=categoryId,proto3,oneof" json:"category_id,omitempty"`
+	CategoryId *uint32 `protobuf:"varint,8,opt,name=category_id,json=categoryId,proto3,oneof" json:"category_id,omitempty"`
 	// Specification
-	Specification *string `protobuf:"bytes,8,opt,name=specification,proto3,oneof" json:"specification,omitempty"`
+	Specification *string `protobuf:"bytes,9,opt,name=specification,proto3,oneof" json:"specification,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -362,6 +364,13 @@ func (x *UpdateProductRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateProductRequest.ProtoReflect.Descriptor instead.
 func (*UpdateProductRequest) Descriptor() ([]byte, []int) {
 	return file_prod_service_products_v1_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateProductRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *UpdateProductRequest) GetName() string {
@@ -457,7 +466,9 @@ func (*UpdateProductResponse) Descriptor() ([]byte, []int) {
 }
 
 type DeleteProductRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -490,6 +501,13 @@ func (x *DeleteProductRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DeleteProductRequest.ProtoReflect.Descriptor instead.
 func (*DeleteProductRequest) Descriptor() ([]byte, []int) {
 	return file_prod_service_products_v1_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteProductRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 type DeleteProductResponse struct {
@@ -648,18 +666,19 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"categoryId\x12#\n" +
 	"\x04sort\x18\a \x01(\v2\x0f.filter.v1.SortR\x04sort\"R\n" +
 	"\x13AllProductsResponse\x12;\n" +
-	"\aproduct\x18\x01 \x03(\v2!.prod_service.products.v1.ProductR\aproduct\"\x92\x03\n" +
-	"\x14UpdateProductRequest\x12\x17\n" +
-	"\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12%\n" +
-	"\vdescription\x18\x02 \x01(\tH\x01R\vdescription\x88\x01\x01\x12\x1e\n" +
-	"\bimage_id\x18\x03 \x01(\tH\x02R\aimageId\x88\x01\x01\x12\x19\n" +
-	"\x05price\x18\x04 \x01(\x04H\x03R\x05price\x88\x01\x01\x12$\n" +
-	"\vcurrency_id\x18\x05 \x01(\rH\x04R\n" +
+	"\aproduct\x18\x01 \x03(\v2!.prod_service.products.v1.ProductR\aproduct\"\xa2\x03\n" +
+	"\x14UpdateProductRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\x03 \x01(\tH\x01R\vdescription\x88\x01\x01\x12\x1e\n" +
+	"\bimage_id\x18\x04 \x01(\tH\x02R\aimageId\x88\x01\x01\x12\x19\n" +
+	"\x05price\x18\x05 \x01(\x04H\x03R\x05price\x88\x01\x01\x12$\n" +
+	"\vcurrency_id\x18\x06 \x01(\rH\x04R\n" +
 	"currencyId\x88\x01\x01\x12\x1b\n" +
-	"\x06rating\x18\x06 \x01(\rH\x05R\x06rating\x88\x01\x01\x12$\n" +
-	"\vcategory_id\x18\a \x01(\rH\x06R\n" +
+	"\x06rating\x18\a \x01(\rH\x05R\x06rating\x88\x01\x01\x12$\n" +
+	"\vcategory_id\x18\b \x01(\rH\x06R\n" +
 	"categoryId\x88\x01\x01\x12)\n" +
-	"\rspecification\x18\b \x01(\tH\aR\rspecification\x88\x01\x01B\a\n" +
+	"\rspecification\x18\t \x01(\tH\aR\rspecification\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\v\n" +
 	"\t_image_idB\b\n" +
@@ -668,8 +687,9 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\a_ratingB\x0e\n" +
 	"\f_category_idB\x10\n" +
 	"\x0e_specification\"\x17\n" +
-	"\x15UpdateProductResponse\"\x16\n" +
-	"\x14DeleteProductRequest\"\x17\n" +
+	"\x15UpdateProductResponse\"&\n" +
+	"\x14DeleteProductRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\x17\n" +
 	"\x15DeleteProductResponse\"$\n" +
 	"\x12ProductByIDRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"R\n" +
