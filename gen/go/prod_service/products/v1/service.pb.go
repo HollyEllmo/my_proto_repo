@@ -39,7 +39,7 @@ type CreateProductRequest struct {
 	// Rating
 	Rating uint32 `protobuf:"varint,6,opt,name=rating,proto3" json:"rating,omitempty"`
 	// Category ID
-	CategoryId string `protobuf:"bytes,7,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	CategoryId uint32 `protobuf:"varint,7,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
 	// Specification
 	Specification string `protobuf:"bytes,8,opt,name=specification,proto3" json:"specification,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -118,11 +118,11 @@ func (x *CreateProductRequest) GetRating() uint32 {
 	return 0
 }
 
-func (x *CreateProductRequest) GetCategoryId() string {
+func (x *CreateProductRequest) GetCategoryId() uint32 {
 	if x != nil {
 		return x.CategoryId
 	}
-	return ""
+	return 0
 }
 
 func (x *CreateProductRequest) GetSpecification() string {
@@ -325,7 +325,7 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\vcurrency_id\x18\x05 \x01(\rR\n" +
 	"currencyId\x12\x16\n" +
 	"\x06rating\x18\x06 \x01(\rR\x06rating\x12\x1f\n" +
-	"\vcategory_id\x18\a \x01(\tR\n" +
+	"\vcategory_id\x18\a \x01(\rR\n" +
 	"categoryId\x12$\n" +
 	"\rspecification\x18\b \x01(\tR\rspecificationB\v\n" +
 	"\t_image_id\"T\n" +
