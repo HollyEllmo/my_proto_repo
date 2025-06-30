@@ -71,7 +71,7 @@ gen: buf-install install-protoc-plugins install-npm-deps
 			cp "$$template_file" go.mod; \
 		else \
 			module_path=$$(echo $$dir | sed 's|$(CURDIR)/||' | sed 's|/$$||'); \
-			module_name="github.com/HollyEllmo/my-proto-repo/$$module_path"; \
+			module_name="github.com/HollyEllmo/my_proto_repo/$$module_path"; \
 			echo "Creating new go.mod for $$module_name"; \
 			go mod init "$$module_name"; \
 		fi; \

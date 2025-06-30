@@ -2,47 +2,47 @@ syntax = "proto3";
 
 package auth.v1;
 
-option go_package = "github.com/HollyEllmo/my-proto-repo/gen/go/auth/v1;pb_auth_sso";
+option go_package = "github.com/HollyEllmo/my_proto_repo/gen/go/auth/v1;pb_auth_sso";
 
 // option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 //   info: {
 //     title: "SSO Service API"
 //     version: "1.0"
-//     description: "API for Single Sign-On (SSO) operations"   
+//     description: "API for Single Sign-On (SSO) operations"
 //     contact: {
 //       name: "SSO Service"
 //       email: "sso@example.com"
 //     }
 //   }
 service AuthService {
-    rpc Register (RegisterRequest) returns (RegisterResponse);
-    rpc Login (LoginRequest) returns (LoginResponse);
-    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
 }
 
 message RegisterRequest {
-    string email = 1;
-    string password = 2;
+  string email = 1;
+  string password = 2;
 }
 
 message RegisterResponse {
-    int64 user_id = 1;
+  int64 user_id = 1;
 }
 
 message LoginRequest {
-    string email = 1;
-    string password = 2;
-    int32  app_id = 3;
+  string email = 1;
+  string password = 2;
+  int32 app_id = 3;
 }
 
 message LoginResponse {
-    string token = 1;
+  string token = 1;
 }
 
 message IsAdminRequest {
-    int64 user_id = 1;
+  int64 user_id = 1;
 }
 
 message IsAdminResponse {
-    bool is_admin = 1;
+  bool is_admin = 1;
 }

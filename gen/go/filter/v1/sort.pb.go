@@ -73,7 +73,7 @@ const file_filter_v1_sort_proto_rawDesc = "" +
 	"\x14filter/v1/sort.proto\x12\tfilter.v1\"\x1c\n" +
 	"\x04Sort\x12\x14\n" +
 	"\x05field\x18\x01 \x01(\tR\x05fieldB\xa6\x01\n" +
-	"\rcom.filter.v1B\tSortProtoP\x01ZEgithub.com/HollyEllmo/my-proto-repo/gen/go/filter/v1;pb_common_filter\xa2\x02\x03FXX\xaa\x02\tFilter.V1\xca\x02\tFilter\\V1\xe2\x02\x15Filter\\V1\\GPBMetadata\xea\x02\n" +
+	"\rcom.filter.v1B\tSortProtoP\x01ZEgithub.com/HollyEllmo/my_proto_repo/gen/go/filter/v1;pb_common_filter\xa2\x02\x03FXX\xaa\x02\tFilter.V1\xca\x02\tFilter\\V1\xe2\x02\x15Filter\\V1\\GPBMetadata\xea\x02\n" +
 	"Filter::V1b\x06proto3"
 
 var (

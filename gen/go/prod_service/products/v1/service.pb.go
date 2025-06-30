@@ -7,7 +7,7 @@
 package pb_prod_products
 
 import (
-	v1 "github.com/HollyEllmo/my-proto-repo/gen/go/filter/v1"
+	v1 "github.com/HollyEllmo/my_proto_repo/gen/go/filter/v1"
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -705,7 +705,7 @@ const file_prod_service_products_v1_service_proto_rawDesc = "" +
 	"\vProductByID\x12,.prod_service.products.v1.ProductByIDRequest\x1a-.prod_service.products.v1.ProductByIDResponse\"\x00B\x8b\x03\x92A\x87\x01\x12]\n" +
 	"\x13Product Service API\x12\x19API for managing products\"&\n" +
 	"\x0fProduct Service\x1a\x13support@example.com2\x031.0*\x02\x01\x022\x10application/json:\x10application/json\n" +
-	"\x1ccom.prod_service.products.v1B\fServiceProtoP\x01ZTgithub.com/HollyEllmo/my-proto-repo/gen/go/prod_service/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
+	"\x1ccom.prod_service.products.v1B\fServiceProtoP\x01ZTgithub.com/HollyEllmo/my_proto_repo/gen/go/prod_service/products/v1;pb_prod_products\xa2\x02\x03PPX\xaa\x02\x17ProdService.Products.V1\xca\x02\x17ProdService\\Products\\V1\xe2\x02#ProdService\\Products\\V1\\GPBMetadata\xea\x02\x19ProdService::Products::V1b\x06proto3"
 
 var (
 	file_prod_service_products_v1_service_proto_rawDescOnce sync.Once
