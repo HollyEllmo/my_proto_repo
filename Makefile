@@ -62,29 +62,19 @@ install-npm-deps:
 .PHONY: gen
 gen: buf-install install-protoc-plugins install-npm-deps
 	@BUF_CACHE_DIR=/tmp/buf-cache PATH="$(HOME)/bin:$$PATH" buf generate
-	@echo "Creating unified go.mod for generated Go code..."
-	@cd $(CURDIR)/gen/go && \
-		echo "module github.com/HollyEllmo/my_proto_repo/gen/go" > go.mod && \
-		echo "" >> go.mod && \
-		echo "go 1.24.2" >> go.mod && \
-		echo "" >> go.mod && \
-		echo "require (" >> go.mod && \
-		echo "	google.golang.org/grpc v1.73.0" >> go.mod && \
-		echo "	google.golang.org/protobuf v1.36.6" >> go.mod && \
-		echo ")" >> go.mod && \
-		go mod tidy
-	@echo "Removing old go.mod files from subdirectories..."
-	@find $(CURDIR)/gen/go -name "go.mod" -not -path "$(CURDIR)/gen/go/go.mod" -delete || true
-	@find $(CURDIR)/gen/go -name "go.sum" -not -path "$(CURDIR)/gen/go/go.sum" -delete || true
+	@echo "Removing old go.mod files from gen subdirectories..."
+	@find $(CURDIR)/gen/go -name "go.mod" -delete || true
+	@find $(CURDIR)/gen/go -name "go.sum" -delete || true
 	@echo "Updating go.work file..."
 	@cd $(CURDIR) && \
 		echo "go 1.24.2" > go.work && \
 		echo "" >> go.work && \
 		echo "use (" >> go.work && \
 		echo "	." >> go.work && \
-		echo "	./gen/go" >> go.work && \
 		echo ")" >> go.work && \
 		go work sync
+	@echo "Running go mod tidy..."
+	@cd $(CURDIR) && go mod tidy
 	@echo "Generating TypeScript client package..."
 	@if [ -d "gen/typescript" ]; then \
 		npm run build 2>/dev/null || echo "TypeScript compilation completed (with possible warnings)"; \
