@@ -4,6 +4,16 @@ package auth.v1;
 
 option go_package = "github.com/HollyEllmo/my-proto-repo/gen/go/auth/v1;pb_auth_sso";
 
+// option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+//   info: {
+//     title: "SSO Service API"
+//     version: "1.0"
+//     description: "API for Single Sign-On (SSO) operations"   
+//     contact: {
+//       name: "SSO Service"
+//       email: "sso@example.com"
+//     }
+//   }
 service AuthService {
     rpc Register (RegisterRequest) returns (RegisterResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
