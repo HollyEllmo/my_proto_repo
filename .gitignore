@@ -1,5 +1,6 @@
-# Generated files
-gen/
+# Generated files (except Go protobuf files)
+gen/swagger/
+gen/typescript/
 dist/
 
 # Dependencies
