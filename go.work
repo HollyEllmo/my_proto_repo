@@ -2,7 +2,5 @@ go 1.24.2
 
 use (
 	.
-	./gen/go/auth
-	./gen/go/filter
-	./gen/go/prod_service
+	./gen/go
 )
