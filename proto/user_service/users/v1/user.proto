@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package user_service.users.v1;
+
+option go_package = "github.com/HollyEllmo/my-proto-repo/gen/go/user_service/users/v1;pb_user_users";
+
+message User {
+  // Identifier
+  string id = 1;
+  // Username
+  string username = 2;
+  // Email
+  string email = 3;
+  // First name
+  string first_name = 4;
+  // Last name
+  string last_name = 5;
+  // Phone number
+  optional string phone = 6;
+  // User status
+  UserStatus status = 7;
+  // User role
+  UserRole role = 8;
+  // Email verified
+  bool email_verified = 9;
+  // Profile image ID
+  optional string profile_image_id = 10;
+  // Last login at
+  optional int64 last_login_at = 11;
+  // Updated at
+  int64 updated_at = 12;
+  // Created at
+  int64 created_at = 13;
+}
+
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ACTIVE = 1;
+  USER_STATUS_INACTIVE = 2;
+  USER_STATUS_SUSPENDED = 3;
+  USER_STATUS_PENDING_VERIFICATION = 4;
+}
+
+enum UserRole {
+  USER_ROLE_UNSPECIFIED = 0;
+  USER_ROLE_USER = 1;
+  USER_ROLE_ADMIN = 2;
+  USER_ROLE_MODERATOR = 3;
+}

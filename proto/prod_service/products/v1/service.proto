@@ -102,7 +102,7 @@ message UpdateProductRequest {
   optional string image_id = 4;
   // Price
   optional uint64 price = 5;
-  // Prince Currency
+  // Price Currency
   optional uint32 currency_id = 6;
   // Rating
   optional uint32 rating = 7;

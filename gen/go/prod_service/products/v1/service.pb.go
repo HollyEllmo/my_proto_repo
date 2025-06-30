@@ -324,7 +324,7 @@ type UpdateProductRequest struct {
 	ImageId *string `protobuf:"bytes,4,opt,name=image_id,json=imageId,proto3,oneof" json:"image_id,omitempty"`
 	// Price
 	Price *uint64 `protobuf:"varint,5,opt,name=price,proto3,oneof" json:"price,omitempty"`
-	// Prince Currency
+	// Price Currency
 	CurrencyId *uint32 `protobuf:"varint,6,opt,name=currency_id,json=currencyId,proto3,oneof" json:"currency_id,omitempty"`
 	// Rating
 	Rating *uint32 `protobuf:"varint,7,opt,name=rating,proto3,oneof" json:"rating,omitempty"`

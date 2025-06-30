@@ -1,0 +1,322 @@
+syntax = "proto3";
+
+package user_service.users.v1;
+
+import "filter/v1/filter.proto";
+import "filter/v1/sort.proto";
+import "google/api/annotations.proto";
+import "user_service/users/v1/user.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "github.com/HollyEllmo/my-proto-repo/gen/go/user_service/users/v1;pb_user_users";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "User Service API"
+    version: "1.0"
+    description: "API for user management and authentication"
+    contact: {
+      name: "User Service"
+      email: "support@example.com"
+    }
+  }
+  schemes: HTTP
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+};
+
+service UserService {
+  // Authentication methods
+  rpc Register(RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/register"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Register a new user"
+      description: "Creates a new user account"
+      tags: "Authentication"
+    };
+  }
+
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/login"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "User login"
+      description: "Authenticates user and returns access token"
+      tags: "Authentication"
+    };
+  }
+
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/refresh"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Refresh access token"
+      description: "Refreshes expired access token using refresh token"
+      tags: "Authentication"
+    };
+  }
+
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/logout"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "User logout"
+      description: "Invalidates user session and tokens"
+      tags: "Authentication"
+    };
+  }
+
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/verify-email"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Verify email"
+      description: "Verifies user email address"
+      tags: "Authentication"
+    };
+  }
+
+  rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/forgot-password"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Forgot password"
+      description: "Initiates password reset process"
+      tags: "Authentication"
+    };
+  }
+
+  rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/reset-password"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Reset password"
+      description: "Resets user password using reset token"
+      tags: "Authentication"
+    };
+  }
+
+  // User management methods
+  rpc GetUserProfile(GetUserProfileRequest) returns (GetUserProfileResponse) {
+    option (google.api.http) = {get: "/v1/users/profile"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get user profile"
+      description: "Retrieves current user profile information"
+      tags: "Users"
+    };
+  }
+
+  rpc UpdateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse) {
+    option (google.api.http) = {
+      put: "/v1/users/profile"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Update user profile"
+      description: "Updates user profile information"
+      tags: "Users"
+    };
+  }
+
+  rpc GetUserByID(GetUserByIDRequest) returns (GetUserByIDResponse) {
+    option (google.api.http) = {get: "/v1/users/{id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get user by ID"
+      description: "Retrieves user information by ID"
+      tags: "Users"
+    };
+  }
+
+  rpc AllUsers(AllUsersRequest) returns (AllUsersResponse) {
+    option (google.api.http) = {get: "/v1/users"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get all users"
+      description: "Retrieves a list of all users with optional filtering"
+      tags: "Users"
+    };
+  }
+
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/change-password"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Change password"
+      description: "Changes user password (requires current password)"
+      tags: "Users"
+    };
+  }
+
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
+    option (google.api.http) = {delete: "/v1/users/{id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Delete user"
+      description: "Deletes user account"
+      tags: "Users"
+    };
+  }
+}
+
+// Authentication messages
+message RegisterRequest {
+  // Username
+  string username = 1;
+  // Email
+  string email = 2;
+  // Password
+  string password = 3;
+  // First name
+  string first_name = 4;
+  // Last name
+  string last_name = 5;
+  // Phone number
+  optional string phone = 6;
+}
+
+message RegisterResponse {
+  User user = 1;
+  string verification_token = 2;
+}
+
+message LoginRequest {
+  // Username or email
+  string identifier = 1;
+  // Password
+  string password = 2;
+}
+
+message LoginResponse {
+  User user = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  int64 expires_at = 4;
+}
+
+message RefreshTokenRequest {
+  // Refresh token
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  int64 expires_at = 3;
+}
+
+message LogoutRequest {
+  // Access token
+  string access_token = 1;
+}
+
+message LogoutResponse {}
+
+message VerifyEmailRequest {
+  // Verification token
+  string verification_token = 1;
+}
+
+message VerifyEmailResponse {
+  bool success = 1;
+}
+
+message ForgotPasswordRequest {
+  // Email
+  string email = 1;
+}
+
+message ForgotPasswordResponse {
+  bool success = 1;
+}
+
+message ResetPasswordRequest {
+  // Reset token
+  string reset_token = 1;
+  // New password
+  string new_password = 2;
+}
+
+message ResetPasswordResponse {
+  bool success = 1;
+}
+
+// User management messages
+message GetUserProfileRequest {}
+
+message GetUserProfileResponse {
+  User user = 1;
+}
+
+message UpdateUserProfileRequest {
+  // First name
+  optional string first_name = 1;
+  // Last name
+  optional string last_name = 2;
+  // Phone number
+  optional string phone = 3;
+  // Profile image ID
+  optional string profile_image_id = 4;
+}
+
+message UpdateUserProfileResponse {
+  User user = 1;
+}
+
+message GetUserByIDRequest {
+  // User ID
+  string id = 1;
+}
+
+message GetUserByIDResponse {
+  User user = 1;
+}
+
+message AllUsersRequest {
+  filter.v1.Pagination pagination = 1;
+  filter.v1.StringFieldFilter username = 2;
+  filter.v1.StringFieldFilter email = 3;
+  filter.v1.StringFieldFilter first_name = 4;
+  filter.v1.StringFieldFilter last_name = 5;
+  UserStatus status = 6;
+  UserRole role = 7;
+  filter.v1.Sort sort = 8;
+}
+
+message AllUsersResponse {
+  repeated User users = 1;
+}
+
+message ChangePasswordRequest {
+  // Current password
+  string current_password = 1;
+  // New password
+  string new_password = 2;
+}
+
+message ChangePasswordResponse {
+  bool success = 1;
+}
+
+message DeleteUserRequest {
+  // User ID
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}
